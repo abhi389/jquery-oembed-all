@@ -1038,12 +1038,12 @@
                             return false;
 
                         var isPlainLink = false;
-                        var url = results['url'];
+                        var url = results['og:url'] || results['url'];
                         if (!!url.indexOf('http://') && !!url.indexOf('https://')) {
                             url = 'http://' + url;
                         }
                         var code = $('<div>').addClass('ccl-embed-ogp-container');
-                        var container = results['url'] ? $('<a>').attr('target', '_blank').attr('href', url) : $('<p/>');
+                        var container = !!url ? $('<a>').attr('target', '_blank').attr('href', url) : $('<p/>');
                         code.append(container);
 
                         if (results['og:image'])
